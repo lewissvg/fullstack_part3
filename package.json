@@ -6,10 +6,11 @@
   "scripts": {
     "build:ui": "rm -rf build && cd ../fullstack/part2/phonebook && npm run build --prod && yes | cp -r build ../../../fullstack_part3",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "deploy:full": "npm run lint && npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
     "start": "node index.js",
     "watch": "nodemon index.js",
+    "lint": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lewis",
@@ -23,6 +24,7 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "eslint": "^6.3.0",
     "nodemon": "^1.19.2"
   }
 }
